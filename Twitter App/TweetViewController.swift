@@ -30,7 +30,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getTweets () {
         
-        if let tweetJSONFileURL = NSBundle.mainBundle().URLForResource("TweetJSON", withExtension: "json") {
+        if let tweetJSONFileURL = NSBundle.mainBundle().URLForResource("Tweet", withExtension: "json") {
             
             if let tweetJSONData = NSData(contentsOfURL: tweetJSONFileURL) {
                 
@@ -45,7 +45,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK:  TABLEVIEW METHODS
-    
     
     func setUpTableView() {
         
