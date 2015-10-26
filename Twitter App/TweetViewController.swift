@@ -36,7 +36,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //Create an array of data out of the tweets
                 
-                if let tweets = TweetJSONParser.tweetFromJSONData(tweetJSONData) {
+                if let tweets = TweetJSON.tweetFromJSONData(tweetJSONData) {
                     self.tweets = tweets
                     self.tableView.reloadData()
                 }

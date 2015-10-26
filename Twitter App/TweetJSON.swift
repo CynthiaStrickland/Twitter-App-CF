@@ -23,7 +23,7 @@ class TweetJSON {
             //enumerate through the array
                 for tweetObject in rootObject {
                     //if it has values
-                    if let text = tweetObject["name"] as? String, id = tweetObject["id_str"] as? String {
+                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String {
                         //initialize it and append it to the array
                         let tweet = Tweet(text: text, id: id)
                         tweets.append(tweet)
