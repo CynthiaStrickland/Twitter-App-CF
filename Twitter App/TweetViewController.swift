@@ -9,9 +9,9 @@
 import UIKit
 
 class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    var tweets: String?
    
+    var tweets = [Tweet]()
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tweetLabel: UILabel!
@@ -26,10 +26,22 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func getTweets () {
         
-        
-        
-        
+        if let tweetJSONFileURL = NSBundle.mainBundle().URLForResource("TweetJSON", withExtension: "json") {
+            
+            if let tweetJSONData = NSData(contentsOfURL: tweetJSONFileURL) {
+                
+                //Create an array of data out of the tweets
+                
+                if let tweets = TweetJSONParser.tweetFromJSONData(tweetJSONData) {
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     //MARK:  TABLEVIEW METHODS
@@ -40,13 +52,20 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.tweets.count
         
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
      
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        let tweet = self.tweets[indexPath.row]
+        
+        cell.textLabel?.text = tweet.text
+        cell.detailTextLabel?.text = "Tweet id is: \(tweet.id)"
+        
         return cell
         
     }

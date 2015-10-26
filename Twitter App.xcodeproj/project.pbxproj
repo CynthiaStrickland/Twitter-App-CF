@@ -42,7 +42,7 @@
 		3D04FE6D1BDEA88200E8B44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D04FE6F1BDEA88200E8B44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D04FE721BDEA88200E8B44A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3D04FE741BDEA88200E8B44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D04FE741BDEA88200E8B44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Twitter App/Info.plist"; sourceTree = "<group>"; };
 		3D04FE791BDEA88200E8B44A /* Twitter AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Twitter AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D04FE7D1BDEA88200E8B44A /* Twitter_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twitter_AppTests.swift; sourceTree = "<group>"; };
 		3D04FE7F1BDEA88200E8B44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 				3D04FE7C1BDEA88200E8B44A /* Twitter AppTests */,
 				3D04FE871BDEA88200E8B44A /* Twitter AppUITests */,
 				3D04FE661BDEA88200E8B44A /* Products */,
+				3D04FE711BDEA88200E8B44A /* LaunchScreen.storyboard */,
+				3D04FE741BDEA88200E8B44A /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,8 +108,6 @@
 				3D04FE681BDEA88200E8B44A /* AppDelegate.swift */,
 				3D04FE6A1BDEA88200E8B44A /* TweetViewController.swift */,
 				3D04FE6F1BDEA88200E8B44A /* Assets.xcassets */,
-				3D04FE711BDEA88200E8B44A /* LaunchScreen.storyboard */,
-				3D04FE741BDEA88200E8B44A /* Info.plist */,
 			);
 			path = "Twitter App";
 			sourceTree = "<group>";
@@ -324,6 +324,7 @@
 				3D04FE721BDEA88200E8B44A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = "Twitter App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
