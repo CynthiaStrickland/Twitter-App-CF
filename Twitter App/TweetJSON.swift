@@ -17,6 +17,8 @@ class TweetJSON {
          // Can user successfully translate the JSON data
         if let rootObject = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers) as? [[String : AnyObject]] {
             
+            print(rootObject)
+            
             //create / initialize an array
             var tweets = [Tweet]()
             

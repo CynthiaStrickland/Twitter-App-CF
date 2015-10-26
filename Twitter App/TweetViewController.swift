@@ -26,11 +26,13 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.getTweets()
     }
     
     func getTweets () {
         
-        if let tweetJSONFileURL = NSBundle.mainBundle().URLForResource("Tweet", withExtension: "json") {
+        if let tweetJSONFileURL = NSBundle.mainBundle().URLForResource("tweet", withExtension: "json") {
             
             if let tweetJSONData = NSData(contentsOfURL: tweetJSONFileURL) {
                 
