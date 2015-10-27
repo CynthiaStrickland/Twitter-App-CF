@@ -1,12 +1,12 @@
 //
-//  TwitterServiceRequet.swift
+//  TwitterServiceRequest.swift
 //  Twitter App
 //
 //  Created by Cynthia Whitlatch on 10/26/15.
 //  Copyright © 2015 Cynthia Whitlatch. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Accounts
 import Social
 
@@ -27,9 +27,10 @@ class TwitterService {
                 completionHandler("could not connect to the server", nil)
             } else {
                 print(response.statusCode)
+                        //RANGED SWITCH STATEMENT
                 switch response.statusCode {
                 case 200...299:
-                    let tweets = TweetJSONParser.tweetsFromJSONData(data)
+                    let tweets = TweetJSONParser.tweetFromJSONData(data)
                     completionHandler(nil,tweets)
                 case 400...499:
                     completionHandler("this is our fault", nil)

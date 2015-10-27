@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import Accounts
 
 
 class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     var users = [User]()
     var tweets = [Tweet]()
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tweetLabel: UILabel!
     
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableView: UITableView!
+    
     class func identifier() -> String {
         return "TweetViewController"
     }
@@ -30,7 +30,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.getTweets()
         
-        
         LoginService.loginForTwitter { (errorDescription, account) -> (Void) in
             if let _ = errorDescription {
                 //warn the user
@@ -39,7 +38,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let account = account {
                 TwitterService.sharedService.account = account
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    self.activityIndicator.startAnimating()
+                self.activityIndicator.startAnimating()
                 })
                 
                 TwitterService.tweetsFromHomeTimeline( { (errorDescription, tweets) -> (Void) in
@@ -50,9 +49,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
                             self.tableView.reloadData()
                         }
                     }
-                    
                 })
-                
             }
         }
     }
@@ -65,7 +62,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //Create an array of data out of the tweets
                 
-                if let tweets = TweetJSON.tweetFromJSONData(tweetJSONData) {
+                if let tweets = TweetJSONParser.tweetFromJSONData(tweetJSONData) {
                     self.tweets = tweets
                     self.tableView.reloadData()
                 } 
@@ -73,7 +70,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-    
     //MARK:  TABLEVIEW METHODS
     
     func setUpTableView() {
