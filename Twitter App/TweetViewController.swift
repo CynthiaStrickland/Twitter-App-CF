@@ -29,7 +29,10 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         
         self.getTweets()
-        
+    }
+    
+    func getAccount() {
+    
         LoginService.loginForTwitter { (errorDescription, account) -> (Void) in
             if let _ = errorDescription {
                 //warn the user

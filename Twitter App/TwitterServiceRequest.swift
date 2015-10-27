@@ -6,7 +6,8 @@
 //  Copyright © 2015 Cynthia Whitlatch. All rights reserved.
 //
 
-import UIKit
+
+import Foundation
 import Accounts
 import Social
 
@@ -18,7 +19,8 @@ class TwitterService {
     
     private init() {}
     
-    class func tweetsFromHomeTimeline(completionHandler : (String?, [Tweet]?) -> (Void)) {
+    class func tweetFromHomeTimeline(completionHandler : (String?, [Tweet]?) -> (Void)) {
+        
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, parameters: nil)
         request.account = self.sharedService.account
         
@@ -27,7 +29,6 @@ class TwitterService {
                 completionHandler("could not connect to the server", nil)
             } else {
                 print(response.statusCode)
-                        //RANGED SWITCH STATEMENT
                 switch response.statusCode {
                 case 200...299:
                     let tweets = TweetJSONParser.tweetFromJSONData(data)
