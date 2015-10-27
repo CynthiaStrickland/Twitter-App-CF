@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     var tweets = [Tweet]()
@@ -41,7 +42,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 if let tweets = TweetJSON.tweetFromJSONData(tweetJSONData) {
                     self.tweets = tweets
                     self.tableView.reloadData()
-                }
+                } 
             }
         }
     }
@@ -64,7 +65,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let tweet = self.tweets[indexPath.row]
         
-        cell.textLabel?.text = tweet.text
+        cell.textLabel?.text = "User tweeted \(tweet.text)"
         cell.detailTextLabel?.text = "Tweet id is: \(tweet.id)"
         
         return cell

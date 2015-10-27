@@ -6,7 +6,7 @@
 //  Copyright © 2015 Cynthia Whitlatch. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class TweetJSON {
     
@@ -25,22 +25,31 @@ class TweetJSON {
             //enumerate through the array
                 for tweetObject in rootObject {
                     //if it has values
-                    if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String {
+                    if let
+                        
+                    text = tweetObject["text"] as? String,
+                    id = tweetObject["id_str"] as? String
+                    
+                    {
+                    
                         //initialize it and append it to the array
                         let tweet = Tweet(text: text, id: id)
+                        
                         tweets.append(tweet)
                 }
             }
                 return tweets
-                
         }
             
     } catch _ {
 
-            
-        }
-        return nil
+        let alert = UIAlertController(title: "Error", message: "There was an Error", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         
-    
+        alert.presentViewController(alert, animated: true, completion: nil)
+        
+        }
+        
+        return nil
     }
 }
