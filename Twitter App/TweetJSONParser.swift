@@ -1,5 +1,5 @@
 //
-//  TweetJSON.swift
+//  TweetJSONParser.swift
 //  Twitter App
 //
 //  Created by Cynthia Whitlatch on 10/26/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetJSON {
+class TweetJSONParser {
     
     class func tweetFromJSONData(json: NSData) -> [Tweet]? {
     

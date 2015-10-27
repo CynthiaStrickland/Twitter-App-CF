@@ -11,9 +11,9 @@ import UIKit
 
 class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
+    var users = [User]()
     var tweets = [Tweet]()
 
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tweetLabel: UILabel!
     
@@ -29,6 +29,32 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         
         self.getTweets()
+        
+        
+        LoginService.loginForTwitter { (errorDescription, account) -> (Void) in
+            if let _ = errorDescription {
+                //warn the user
+            }
+            
+            if let account = account {
+                TwitterService.sharedService.account = account
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    self.activityIndicator.startAnimating()
+                })
+                
+                TwitterService.tweetsFromHomeTimeline( { (errorDescription, tweets) -> (Void) in
+                    if let tweets = tweets {
+                        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+                            self.tweets = tweets
+                            self.activityIndicator.stopAnimating()
+                            self.tableView.reloadData()
+                        }
+                    }
+                    
+                })
+                
+            }
+        }
     }
     
     func getTweets () {
@@ -46,6 +72,7 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
+
     
     //MARK:  TABLEVIEW METHODS
     
@@ -58,7 +85,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
      
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -69,8 +95,6 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.detailTextLabel?.text = "Tweet id is: \(tweet.id)"
         
         return cell
-        
     }
     
 }
-
