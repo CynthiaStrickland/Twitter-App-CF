@@ -94,6 +94,47 @@
             </objects>
             <point key="canvasLocation" x="1058.5" y="337.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="P8M-7r-ls4">
+            <objects>
+                <viewController id="qTM-ae-nhF" customClass="TWITTERViewController" customModule="Twitter_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SAN-bO-Jn2"/>
+                        <viewControllerLayoutGuide type="bottom" id="1cj-hD-mwB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Mf-4T-aW6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Eq-Bv-wyk">
+                                <rect key="frame" x="76" y="127" width="240" height="189"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pg-XP-bcF">
+                                <rect key="frame" x="39" y="359" width="99" height="30"/>
+                                <state key="normal" title="Choose Image"/>
+                                <connections>
+                                    <action selector="imageSelected:" destination="qTM-ae-nhF" eventType="touchUpInside" id="4yz-He-wGE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-47-5AZ">
+                                <rect key="frame" x="271" y="359" width="42" height="30"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="tweetImage:" destination="qTM-ae-nhF" eventType="touchUpInside" id="OoG-xg-Nm7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="6Eq-Bv-wyk" id="AbL-a2-dhl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKZ-c4-ajx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1491.5" y="337.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4HO-qL-ZSH">
             <objects>
