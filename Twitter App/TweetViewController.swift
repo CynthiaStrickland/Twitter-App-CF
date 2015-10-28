@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,10 +21,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.dataSource = self
         
         self.getAccount()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // MARK: Week 2 Class + Homework.
@@ -81,19 +77,17 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TwitterTableViewCell
+        
         let tweet = tweets[indexPath.row]
         
-        cell.textLabel?.text = tweet.text
+        cell.nameLabel.text = tweet.text
         
         if let user = tweet.user {
-            cell.detailTextLabel?.text = "Posted by: \(user.name)"
+            cell.tweetLabel.text = "Posted by: \(user.name)"
         } else {
-            cell.detailTextLabel?.text = "Posted by: Sponsor."
+            cell.tweetLabel.text = "Posted by: Sponsor."
         }
-        
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         return cell
     }
