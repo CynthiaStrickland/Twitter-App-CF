@@ -84,7 +84,13 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wSa-VV-vkh" secondAttribute="bottom" id="dwb-g0-dm7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7Io-Gk-ygS"/>
+                    <navigationItem key="navigationItem" id="7Io-Gk-ygS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="zM2-7b-GB0">
+                            <connections>
+                                <action selector="refreshBarButton:" destination="BYZ-38-t0r" id="t2r-hj-iOp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="wSa-VV-vkh" id="PIf-NO-vPk"/>
@@ -94,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="1058.5" y="337.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Tweet Detail View Controller-->
         <scene sceneID="r2b-Ix-btv">
             <objects>
-                <viewController id="QUt-c8-BMj" sceneMemberID="viewController">
+                <viewController id="QUt-c8-BMj" customClass="TweetDetailViewController" customModule="Twitter_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ieh-zr-vaM"/>
                         <viewControllerLayoutGuide type="bottom" id="EL9-3h-fwx"/>

@@ -10,16 +10,30 @@ import UIKit
 
 class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    class func identifier() -> String {
+    @IBAction func refreshBarButton(sender: AnyObject) {
         
     }
+
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var refreshBarButton: IUBarButtonItem!
+    var spinner: UIActivityIndicatorView!
     
     var maxRows = 10
     var maxSection = 8
     
-    var tweets = [Tweet]()
+    class func identifier() -> String {
+        return "TweetViewController"
+    }
+    
+    var tweets = [Tweet]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    
+    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +48,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.tableView.estimatedRowHeight = 10
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.refreshBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "getTweets")
+        self.navigationItem.rightBarButtonItem = self.refreshBarButton
+        self.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        self.spinner.hidesWhenStopped = true
     }
     
     func getAccount() {
@@ -65,6 +84,10 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getTweets() {
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner)
+        }
         TwitterService.tweetsFromHomeTimeline { (error, tweets) -> () in
             if let error = error {
                 print(error)
@@ -115,6 +138,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let hue = section / CGFloat(maxSection)
         
         return UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
+        }
     }
-    
-}
+
