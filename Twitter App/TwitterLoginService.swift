@@ -13,14 +13,10 @@ class TwitterLoginService {
     
     class func loginTwitter(completionHandler : (String?, ACAccount?) -> (Void)) {
         
-        //Set up account store / initialize it
         let accountStore = ACAccountStore()
-        
-        //Give Account Store an account type (TWITTER)
         
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
-        // End of this is a closure - This happens asynchronously
         accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted, error) -> Void in
             
             if let _ = error {

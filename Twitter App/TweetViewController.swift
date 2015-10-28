@@ -22,9 +22,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.getAccount()
     }
-    
-    // MARK: Week 2 Class + Homework.
-    
+        
     func getAccount() {
         TwitterLoginService.loginTwitter({ (error, account) -> () in
             if let error = error {
@@ -77,7 +75,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TwitterTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TwitterTableViewCell
         
         let tweet = tweets[indexPath.row]
         

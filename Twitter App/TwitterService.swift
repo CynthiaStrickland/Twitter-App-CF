@@ -20,16 +20,18 @@ class TwitterService {
     
     class func tweetsFromHomeTimeline(completion: (String?, [Tweet]?) -> () ) {
         
-        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json"), parameters: nil)
+        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json"), parameters: nil)
         
         if let account = self.sharedService.account {
             request.account = account
+
             
             request.performRequestWithHandler { (data, response, error) -> Void in
                 if let error = error {
                     print(error.description)
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
                 }
+                
                 print(response.description)
                 
                 switch response.statusCode {
@@ -37,6 +39,7 @@ class TwitterService {
                     let tweets = TweetJSONParser.TweetFromJSONData(data)
                     completion(nil, tweets)
                 case 400...499:
+                    print(response.description)
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [user input error].", nil)
                 case 500...599:
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json returned status code \(response.statusCode) [server side error].", nil)
@@ -62,6 +65,13 @@ class TwitterService {
                     completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json could not be completed.", nil); return
                 }
                 
+                print(
+                    response.description)
+                
+                if let data = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    print(data  )
+                }
+            
                 switch response.statusCode {
                 case 200...299:
                     do {
@@ -87,41 +97,3 @@ class TwitterService {
     
 }
 
-//import Foundation
-//import Accounts
-//import Social
-//
-//class TwitterService {
-//
-//    static let sharedService = TwitterService()
-//
-//    var account: ACAccount?
-//
-//    private init() {}
-//
-//    class func tweetsFromHomeTimeline(completionHandler : (String?, [Tweet]?) -> (Void)) {
-//        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, parameters: nil)
-//        request.account = self.sharedService.account
-//
-//        request.performRequestWithHandler { (data, response, error) -> Void in
-//            if let _ = error {
-//                completionHandler("could not connect to the server", nil)
-//            } else {
-//                print(response.statusCode)
-//                switch response.statusCode {
-//                case 200...299:
-//                    let tweets = TweetJSONParser.tweetFromJSONData(data)
-//                    completionHandler(nil,tweets)
-//                case 400...499:
-//                    completionHandler("this is our fault", nil)
-//                case 500...599:
-//                    completionHandler("this is the servers fault", nil)
-//                default:
-//                    completionHandler("error occurred", nil)
-//                }
-//
-//            }
-//        }
-//
-//    }
-//}
