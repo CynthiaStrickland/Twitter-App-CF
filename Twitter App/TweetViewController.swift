@@ -10,6 +10,10 @@ import UIKit
 
 class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    class func identifier() -> String {
+        
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var maxRows = 10
