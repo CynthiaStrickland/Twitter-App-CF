@@ -12,17 +12,26 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+    var maxRows = 10
+    var maxSection = 8
+    
     var tweets = [Tweet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupTableView()
+        self.getAccount()
+    }
+    
+    func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.getAccount()
+        self.tableView.estimatedRowHeight = 10
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-        
+    
     func getAccount() {
         TwitterLoginService.loginTwitter({ (error, account) -> () in
             if let error = error {
@@ -73,7 +82,9 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return tweets.count
     }
     
-    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return maxSection
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TwitterTableViewCell
         
@@ -87,7 +98,19 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.tweetLabel.text = "Posted by: Sponsor."
         }
         
+        cell.backgroundColor = cellColorForIndex(indexPath)
+        
         return cell
+    }
+    
+    func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
+        let row = CGFloat(indexPath.row)
+        let section = CGFloat(indexPath.section)
+        
+        let saturation = 1.0 - row / CGFloat(maxRows)
+        let hue = section / CGFloat(maxSection)
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
     }
     
 }
