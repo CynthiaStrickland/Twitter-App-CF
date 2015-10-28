@@ -9,7 +9,7 @@
 import UIKit
 import Accounts
 
-class LoginService {
+class TwitterLoginService {
     
     class func loginForTwitter(completionHandler : (String?, ACAccount?) -> (Void)) {
         

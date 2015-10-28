@@ -1,5 +1,5 @@
 //
-//  TweetViewController.swift
+//  LoginService.swift
 //  Twitter App
 //
 //  Created by Cynthia Whitlatch on 10/26/15.
@@ -9,9 +9,33 @@
 import UIKit
 import Accounts
 
+class LoginService: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-class TweetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
+
+class LoginService {
+    class func loginForTwitter(completionHandler : (String?, ACAccount?) -> (Void)) {
+        let accountStore = ACAccountStore()
+        let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
+        accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted, error) -> Void in
+            if let _ = error {
+                completionHandler("Please sign in",nil)
+                return
+            } else {
+                if granted {
+                    if let account = accountStore.accountsWithAccountType(accountType).first as? ACAccount {
+                        completionHandler(nil,account)
+                    }
+                } else {
+                    //tell the user this app needs twitter
+                    completionHandler("This app requires twitter access",nil)
+                    
+                }
+            }
+        }
+    }
+}
+
+
     var users = [User]()
     var tweets = [Tweet]()
     
@@ -33,18 +57,19 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getAccount() {
     
-        LoginService.loginForTwitter { (errorDescription, account) -> (Void) in
-            if let _ = errorDescription {
-                //warn the user
+        TwitterLoginService.loginForTwitter { (error, account) -> (Void) in
+            
+            if let _ = error {
             }
             
             if let account = account {
+
                 TwitterService.sharedService.account = account
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 self.activityIndicator.startAnimating()
                 })
                 
-                TwitterService.tweetsFromHomeTimeline( { (errorDescription, tweets) -> (Void) in
+                TwitterService.tweetFromHomeTimeline( { (error, tweets) -> (Void) in
                     if let tweets = tweets {
                         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
                             self.tweets = tweets
@@ -56,6 +81,12 @@ class TweetViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
+    
+    func oauthUser() {
+        
+    }
+    
+    
     
     func getTweets () {
         
