@@ -1,5 +1,5 @@
 //
-//  TwitterLogin.swift
+//  TwitterLoginService.swift
 //  Twitter App
 //
 //  Created by Cynthia Whitlatch on 10/26/15.
@@ -11,7 +11,7 @@ import Accounts
 
 class TwitterLoginService {
     
-    class func loginForTwitter(completionHandler : (String?, ACAccount?) -> (Void)) {
+    class func loginTwitter(completionHandler : (String?, ACAccount?) -> (Void)) {
         
         //Set up account store / initialize it
         let accountStore = ACAccountStore()

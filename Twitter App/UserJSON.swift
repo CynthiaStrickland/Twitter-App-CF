@@ -32,7 +32,7 @@ class UserJSON {
                         profileImageURL = userInfo["profile_image_url"] as? String {
                             
                             //initialize it and append it to the array
-                            let tweet = User(username: username, profileImageURL: profileImageURL)
+                            let tweet = User(name: username, profileImageURL: profileImageURL)
                             
                             tweets.append(tweet)
                     }
