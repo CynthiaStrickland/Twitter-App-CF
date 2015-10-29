@@ -103,7 +103,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let tweets = tweets {
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     self.tweets = tweets
-                    self.tableView.reloadData()
                 })
             }
         }
@@ -130,6 +129,9 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             cell.tweetLabel.text = "Posted by: Sponsor."
         }
+        
+        self.tableView.estimatedRowHeight = 10              //Any number greater than 2 - calculate cell height itself anyway
+        self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
         
         cell.backgroundColor = cellColorForIndex(indexPath)
         
