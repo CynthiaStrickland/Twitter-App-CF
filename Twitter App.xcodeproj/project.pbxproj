@@ -26,6 +26,8 @@
 		3D04FEB21BDF3B2D00E8B44A /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D04FEB11BDF3B2D00E8B44A /* TwitterService.swift */; };
 		3D04FEB81BDF48E800E8B44A /* TwitterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D04FEB71BDF48E800E8B44A /* TwitterTableViewCell.swift */; };
 		3D58D5931BE17F9B009F1B9A /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58D5921BE17F9B009F1B9A /* TweetDetailViewController.swift */; };
+		3D58D5951BE2C214009F1B9A /* customTweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D58D5941BE2C214009F1B9A /* customTweetCell.xib */; };
+		3D58D5971BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D58D5961BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift */; };
 		3DD300311BDFF3C000ACF305 /* TWITTERViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD300301BDFF3C000ACF305 /* TWITTERViewController.swift */; };
 		3DD300331BDFFC9600ACF305 /* lion300.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DD300321BDFFC9600ACF305 /* lion300.jpg */; };
 		3DD300351BDFFD5900ACF305 /* ganesh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DD300341BDFFD5900ACF305 /* ganesh.jpg */; };
@@ -74,6 +76,8 @@
 		3D04FEB11BDF3B2D00E8B44A /* TwitterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 		3D04FEB71BDF48E800E8B44A /* TwitterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewCell.swift; sourceTree = "<group>"; };
 		3D58D5921BE17F9B009F1B9A /* TweetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailViewController.swift; sourceTree = "<group>"; };
+		3D58D5941BE2C214009F1B9A /* customTweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customTweetCell.xib; sourceTree = "<group>"; };
+		3D58D5961BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTweetTableViewCell.swift; sourceTree = "<group>"; };
 		3DD300301BDFF3C000ACF305 /* TWITTERViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWITTERViewController.swift; sourceTree = "<group>"; };
 		3DD300321BDFFC9600ACF305 /* lion300.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lion300.jpg; sourceTree = "<group>"; };
 		3DD300341BDFFD5900ACF305 /* ganesh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ganesh.jpg; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			children = (
 				3D04FE9F1BDEC2F300E8B44A /* TweetJSONParser.swift */,
 				3D04FEAB1BDEE6A800E8B44A /* TwitterLoginService.swift */,
+				3D58D5961BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift */,
 				3D04FEB11BDF3B2D00E8B44A /* TwitterService.swift */,
 				3D04FE6A1BDEA88200E8B44A /* TweetViewController.swift */,
 				3D58D5921BE17F9B009F1B9A /* TweetDetailViewController.swift */,
@@ -180,6 +185,7 @@
 			children = (
 				3D04FE6C1BDEA88200E8B44A /* Main.storyboard */,
 				3D04FE711BDEA88200E8B44A /* LaunchScreen.storyboard */,
+				3D58D5941BE2C214009F1B9A /* customTweetCell.xib */,
 			);
 			name = View;
 			path = "Twitter App";
@@ -304,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D58D5951BE2C214009F1B9A /* customTweetCell.xib in Resources */,
 				3D04FE731BDEA88200E8B44A /* LaunchScreen.storyboard in Resources */,
 				3DD300331BDFFC9600ACF305 /* lion300.jpg in Resources */,
 				3D04FEA41BDECDED00E8B44A /* instagram.json in Resources */,
@@ -335,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D58D5971BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift in Sources */,
 				3D04FEB81BDF48E800E8B44A /* TwitterTableViewCell.swift in Sources */,
 				3D04FE9D1BDEC21700E8B44A /* Tweet.swift in Sources */,
 				3D58D5931BE17F9B009F1B9A /* TweetDetailViewController.swift in Sources */,

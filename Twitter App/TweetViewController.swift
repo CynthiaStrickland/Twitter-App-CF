@@ -24,8 +24,12 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var maxSection = 8
     
     class func identifier() -> String {
-        return "TweetViewController"
+        return "CustomTweetTableViewCell"
     }
+    
+//    class func identifier() -> String {
+//        return "TweetViewController"
+//    }
     
     var tweets = [Tweet]() {
         didSet {
@@ -44,6 +48,10 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.setupTableView()
         self.getAccount()
+        
+        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: nil)
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: ""  )
+        
     }
     
     func setupTableView() {
@@ -118,11 +126,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return maxSection
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TwitterTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier("tweetCustomTableViewCell"), forIndexPath: indexPath) as! CustomTweetTableViewCell
         
         let tweet = tweets[indexPath.row]
         
-        cell.nameLabel.text = tweet.text
+        cell.tweetTextLabel.text = tweet.text
         
         if let user = tweet.user {
             cell.tweetLabel.text = "Posted by: \(user.name)"
@@ -146,7 +154,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tweetDetailViewcontroller.tweet = tweet
         
         self.navigationController?.pushViewController(tweetDetailViewcontroller, animated: true)
-        
         
     }
     

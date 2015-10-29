@@ -16,6 +16,12 @@ class TweetDetailViewController: UIViewController {
         return "TweetDetailViewController"
     }
     
+    class func isRetweet(tweetObject: [String : AnyObject]) -> (Bool, [String : AnyObject]?) {
+        if let retweetObjectObject = tweetObject["retweeted_status"] as? [String : AnyObject] {
+            if let _ = retweetObjectObject
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tweet = self.tweet {

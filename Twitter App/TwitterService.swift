@@ -32,8 +32,6 @@ class TwitterService {
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
                 }
                 
-                print(response.description)
-                
                 switch response.statusCode {
                 case 200...299:
                     let tweets = TweetJSONParser.TweetFromJSONData(data)
@@ -64,9 +62,6 @@ class TwitterService {
                     print(error)
                     completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json could not be completed.", nil); return
                 }
-                
-                print(
-                    response.description)
                 
                 if let data = NSString(data: data, encoding: NSUTF8StringEncoding) {
                     print(data  )

@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="1058.5" y="337.5"/>
         </scene>
-        <!--Tweet Detail View Controller-->
+        <!--Title-->
         <scene sceneID="r2b-Ix-btv">
             <objects>
                 <viewController id="QUt-c8-BMj" customClass="TweetDetailViewController" customModule="Twitter_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,6 +105,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="h8F-Jq-bBw"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="WmK-hh-zTn">
+                        <barButtonItem key="leftBarButtonItem" title="BACK" id="d7j-ow-MAw"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9h4-AQ-7eQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
