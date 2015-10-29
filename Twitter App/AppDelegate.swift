@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.setupNavigationController()
+//        self.setupNavigationController()
 
         return true
     }
@@ -23,8 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupNavigationController(){
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tweetsViewController = storyboard.instantiateInitialViewController()(TweetViewController.identifer()) as! TweetViewController
-        let navigationController = UINavigationController(rootViewController: TweetViewController)
+        //Instantiate
+        
+        let tweetViewController = storyboard.instantiateViewControllerWithIdentifier(TweetViewController.identifier()) as! TweetViewController
+
+        
+            //call dedicated initiator
+        let navigationController = UINavigationController(rootViewController: tweetViewController)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         

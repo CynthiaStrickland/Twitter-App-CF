@@ -17,7 +17,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    var refreshBarButton: IUBarButtonItem!
+    var refreshBarButton: UIBarButtonItem!
     var spinner: UIActivityIndicatorView!
     
     var maxRows = 10
@@ -29,7 +29,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var tweets = [Tweet]() {
         didSet {
+            
+            //  This is called when the getTweets Function Fires.   This reloads the tableview data and replaces spinner with refresh Button
+            
             self.tableView.reloadData()
+            self.navigationItem.rightBarButtonItem = self.refreshBarButton
         }
     
     
@@ -46,9 +50,10 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.estimatedRowHeight = 10
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 10              //Any number greater than 2 - calculate cell height itself anyway
+        self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
         
+                //initializing variables
         self.refreshBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "getTweets")
         self.navigationItem.rightBarButtonItem = self.refreshBarButton
         self.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -85,6 +90,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getTweets() {
         
+          //Basically creating a BarButton with a custom view because the Spinner is of type ActivityIndicator, not BarButtonItem
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner)
         }
@@ -130,6 +136,34 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tweet = self.tweets[indexPath.row]
+            //create an instance of TweetDetailViewController
+        let tweetDetailViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier(TweetDetailViewController.identifier()) as! TweetDetailViewController
+        
+        tweetDetailViewcontroller.tweet = tweet
+        
+        self.navigationController?.pushViewController(tweetDetailViewcontroller, animated: true)
+        
+        
+    }
+    
+//// MARK: - Navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if segue.identifier == TweetDetailViewController.identifier() {
+//            let tweetDetailViewController = segue.destinationViewController as! TweetDetailViewController
+//            
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                
+//            let tweet = self.tweets[indexPath.row]
+//    
+//            tweetDetailViewController.tweet = tweet
+//            
+//        }
+//    }
+//}
+
     func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
         let row = CGFloat(indexPath.row)
         let section = CGFloat(indexPath.section)

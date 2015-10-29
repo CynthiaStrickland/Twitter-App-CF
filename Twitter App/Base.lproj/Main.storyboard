@@ -9,7 +9,7 @@
         <!--Tweet View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TweetViewController" customModule="Twitter_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetViewControler" id="BYZ-38-t0r" customClass="TweetViewController" customModule="Twitter_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -61,6 +61,7 @@
                                                 <constraint firstItem="N4n-uG-ZC0" firstAttribute="top" secondItem="rom-3A-pQ0" secondAttribute="top" id="Oza-76-Zpe"/>
                                                 <constraint firstItem="y1U-DY-JtH" firstAttribute="leading" secondItem="rom-3A-pQ0" secondAttribute="trailing" constant="18" id="Qq6-fh-L77"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="N4n-uG-ZC0" secondAttribute="trailing" constant="14" id="TMz-ZX-ZNQ"/>
+                                                <constraint firstItem="y1U-DY-JtH" firstAttribute="top" secondItem="N4n-uG-ZC0" secondAttribute="bottom" constant="11" id="cN3-8R-rkP"/>
                                                 <constraint firstItem="y1U-DY-JtH" firstAttribute="baseline" secondItem="rom-3A-pQ0" secondAttribute="baseline" id="d9M-II-fG5"/>
                                                 <constraint firstItem="rom-3A-pQ0" firstAttribute="centerY" secondItem="42Z-OO-Rht" secondAttribute="centerY" id="j0c-mP-oij"/>
                                                 <constraint firstItem="N4n-uG-ZC0" firstAttribute="leading" secondItem="rom-3A-pQ0" secondAttribute="trailing" constant="18" id="tPD-vO-krS"/>
@@ -70,7 +71,7 @@
                                             <outlet property="imageView" destination="rom-3A-pQ0" id="mnu-Pw-Cf4"/>
                                             <outlet property="nameLabel" destination="N4n-uG-ZC0" id="xad-Ed-3uV"/>
                                             <outlet property="tweetLabel" destination="y1U-DY-JtH" id="i1C-7i-4gF"/>
-                                            <segue destination="QUt-c8-BMj" kind="show" identifier="cellDetail" id="fIK-hO-YYh"/>
+                                            <segue destination="QUt-c8-BMj" kind="show" identifier="detailViewController" id="fIK-hO-YYh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
