@@ -68,6 +68,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.spinner.hidesWhenStopped = true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        <#code#>
+    }
+    
+    
     func getAccount() {
         TwitterLoginService.loginTwitter({ (error, account) -> () in
             if let error = error {
@@ -138,7 +143,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.tweetLabel.text = "Posted by: Sponsor."
         }
         
-        self.tableView.estimatedRowHeight = 10              //Any number greater than 2 - calculate cell height itself anyway
+        self.tableView.estimatedRowHeight = 100              //Any number greater than 2 - calculate cell height itself anyway
         self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
         
         cell.backgroundColor = cellColorForIndex(indexPath)
@@ -173,6 +178,9 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
 //}
 
+    
+    
+    
     func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
         let row = CGFloat(indexPath.row)
         let section = CGFloat(indexPath.section)

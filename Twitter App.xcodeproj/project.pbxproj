@@ -144,7 +144,6 @@
 				3D04FEB11BDF3B2D00E8B44A /* TwitterService.swift */,
 				3D04FE6A1BDEA88200E8B44A /* TweetViewController.swift */,
 				3D58D5921BE17F9B009F1B9A /* TweetDetailViewController.swift */,
-				3D04FE6F1BDEA88200E8B44A /* Assets.xcassets */,
 				3D04FEB71BDF48E800E8B44A /* TwitterTableViewCell.swift */,
 				3DD300301BDFF3C000ACF305 /* TWITTERViewController.swift */,
 				3D58D5981BE2CEFE009F1B9A /* ImageFetcher.swift */,
@@ -197,6 +196,7 @@
 		3D04FEA61BDED07D00E8B44A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3D04FE6F1BDEA88200E8B44A /* Assets.xcassets */,
 				3DD300321BDFFC9600ACF305 /* lion300.jpg */,
 				3DD300341BDFFD5900ACF305 /* ganesh.jpg */,
 				3D04FEA91BDEDEF100E8B44A /* Social.framework */,
