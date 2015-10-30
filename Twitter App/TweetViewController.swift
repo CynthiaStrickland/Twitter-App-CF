@@ -22,15 +22,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var maxRows = 10
     var maxSection = 8
-    
-    class func identifier() -> String {
-        return "CustomTweetTableViewCell"
-    }
-    
-//    class func identifier() -> String {
-//        return "TweetViewController"
-//    }
-    
+
     var tweets = [Tweet]() {
         didSet {
             
@@ -50,15 +42,15 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.getAccount()
         
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: nil)
-        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: ""  )
-        
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
     }
     
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.estimatedRowHeight = 10              //Any number greater than 2 - calculate cell height itself anyway
+        self.tableView.estimatedRowHeight = 10
+            //Any number greater than 2 - calculate cell height itself anyway
         self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
         
                 //initializing variables
@@ -131,7 +123,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return maxSection
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier("tweetCustomTableViewCell"), forIndexPath: indexPath) as! CustomTweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetTableViewCell
+        
+        //   This is no long an instance of UITableView because I created a XIB file
+        
+        
         
         let tweet = tweets[indexPath.row]
         

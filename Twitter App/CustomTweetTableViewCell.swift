@@ -10,7 +10,37 @@ import UIKit
 
 class CustomTweetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var customCellImage: UIImageView!
     @IBOutlet weak var customTweetLabel: UILabel!
+    
+    var tweet : Tweet? {
+        
+        didSet {
+            if let tweet = self.tweet,
+            user = tweet.user,
+            text = self.tweet?.text {
+                
+            self.customTweetLabel.text = text
+                
+                if let image = user.image {
+                    self.customCellImage.image = image
+                    
+                } else {
+                    
+                    if let url = NSURL(string:user.profileManagerURL) {
+                        let downloadQ = dispatch_queue_create("downloadQ", nil)                    }
+                }
+                    
+            }
+        }
+        
+        
+    }
+    
+    class func identifier() -> String {
+        return "tweetCustomTableViewCell"
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
