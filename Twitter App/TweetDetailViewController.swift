@@ -71,14 +71,7 @@ class TweetDetailViewController: UIViewController {
         self.detailLabel.text = self.tweet.isRetweet ? self.tweet.rqText : self.tweet.text
     }
     
-}
-
-    
-    
-    
-    
-    
-    
+}   
     
 //    
 //    var tweet: Tweet?

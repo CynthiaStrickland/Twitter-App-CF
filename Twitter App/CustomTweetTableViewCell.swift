@@ -18,31 +18,41 @@ class CustomTweetTableViewCell: UITableViewCell {
         didSet {
             
             self.customTweetLabel.text = self.tweet!.text
-            self.customCellImage.image = UIImage(named: "ganesh.jpg")
+//            self.customCellImage.image = UIImage(named: "ganesh.jpg")
             
-            if let tweet = self.tweet,
+            if let tweet = self.tweet, user = tweet.user {
                 
-                user = tweet.user,
-                text = self.tweet?.text {
+                if let url = NSURL(string: "ganesh.jpg") {
                     
-                    self.customTweetLabel.text = text
+                
+                let downloadQ = dispatch_queue_create("downloadQ", nil)
+                dispatch_async(downloadQ, { () -> Void in
+                    let imageData = NSData(contentsOfURL: url)
                     
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.customCellImage.image = UIImage(data: imageData!)
+                    
+                })
+                })
+                
+                    
+//                    NSOperationQueue().addOperationWithBlock({ () -> Void in
+//                        let imageData = NSData(contentsOfURL: url)!
+//                        self.customCellImage.image = UIImage(data: imageData)
+//                        
+//                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//                        self.customCellImage.image = UIImage(data: imageData)
+//                        })
+//                    })
+                    
+
+
+                }
+                
+                
                     if let image = user.image {
                         self.customCellImage.image = image
-                    } else {
-                        
-                        if let url = NSURL(string: user.profileImageURL) {
-                            let downloadQ = dispatch_queue_create("downloadQ", nil)
-                            dispatch_async(downloadQ, { () -> Void in
-                                let imageData = NSData(contentsOfURL: url)!
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    let image = UIImage(data: imageData)
-                                    self.customCellImage.image = image
-                                    user.image = image
-                            })
-                        })
-                    }
+
                 }
             }
         }
