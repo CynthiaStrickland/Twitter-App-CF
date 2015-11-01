@@ -27,25 +27,24 @@ class TweetJSONParser {
                             if isRetweet.0 == true {
                                 if let
                                     retweetObject = isRetweet.1 {
-                                        if let
-                                            retweetText = retweetObject["text"] as? String,
-                                            retweetUser = retweetObject["user"] as? [String : AnyObject] {
-                                                if let
-                                                    retweetUser = userFromData(retweetUser), user = userFromData(user) {
-                                                        let
-                                                        tweet = Tweet(
-                                                            text: text,
-                                                            rqText: retweetText,
-                                                            id: id, user: user,
-                                                            rqUser: retweetUser,
-                                                            isRetweet: true)
-                                                        tweets.append(tweet)
+                                if let
+                                    retweetText = retweetObject["text"] as? String,
+                                    retweetUser = retweetObject["user"] as? [String : AnyObject] {
+                                if let
+                                    retweetUser = userFromData(retweetUser), user = userFromData(user) {
+                                    let tweet = Tweet(
+                                        text: text,
+                                        rqText: retweetText,
+                                        id: id,
+                                        user: user,
+                                        rqUser: retweetUser,
+                                        isRetweet: true)
+                                        
+                                        tweets.append(tweet)
                                                 }
                                         }
                                 }
                             } else {
-                                
-                                // Older code.
                                 
                                 let tweet = Tweet(text : text, id : id)
                                 if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
@@ -53,7 +52,7 @@ class TweetJSONParser {
                                 }
                                 
                                 tweets.append(tweet)
-                            }
+                        }
                     }
                 }
                 

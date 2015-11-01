@@ -13,7 +13,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func refreshBarButton(sender: AnyObject) {
         
     }
-
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,8 +30,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
             self.navigationItem.rightBarButtonItem = self.refreshBarButton
         }
-    
-    
     }
     
     override func viewDidLoad() {
@@ -40,6 +37,8 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.setupTableView()
         self.getAccount()
+        
+        //  Registering NIB so TableView can use the NIB
         
         let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: nil)
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
@@ -59,11 +58,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         self.spinner.hidesWhenStopped = true
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        <#code#>
-    }
-    
+
     
     func getAccount() {
         TwitterLoginService.loginTwitter({ (error, account) -> () in
@@ -122,26 +117,17 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return maxSection
     }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetTableViewCell
         
         //   This is no long an instance of UITableView because I created a XIB file
         
-        
-        
         let tweet = tweets[indexPath.row]
         
-        cell.tweetTextLabel.text = tweet.text
-        
-        if let user = tweet.user {
-            cell.tweetLabel.text = "Posted by: \(user.name)"
-        } else {
-            cell.tweetLabel.text = "Posted by: Sponsor."
-        }
-        
-        self.tableView.estimatedRowHeight = 100              //Any number greater than 2 - calculate cell height itself anyway
-        self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
-        
+        cell.customTweetLabel.text = tweet.text
         cell.backgroundColor = cellColorForIndex(indexPath)
         
         return cell

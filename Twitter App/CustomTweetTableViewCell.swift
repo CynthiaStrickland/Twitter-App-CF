@@ -16,25 +16,33 @@ class CustomTweetTableViewCell: UITableViewCell {
     var tweet : Tweet? {
         
         didSet {
+            
             if let tweet = self.tweet,
-            user = tweet.user,
-            text = self.tweet?.text {
                 
-            self.customTweetLabel.text = text
-                
-                if let image = user.image {
-                    self.customCellImage.image = image
+                user = tweet.user,
+                text = self.tweet?.text {
                     
-                } else {
+                    self.customTweetLabel.text = text
                     
-                    if let url = NSURL(string:user.profileManagerURL) {
-                        let downloadQ = dispatch_queue_create("downloadQ", nil)                    }
+                    if let image = user.image {
+                        self.customCellImage.image = image
+                    } else {
+                        
+                        if let url = NSURL(string: user.profileImageURL) {
+                            let downloadQ = dispatch_queue_create("downloadQ", nil)
+                            dispatch_async(downloadQ, { () -> Void in
+                                let imageData = NSData(contentsOfURL: url)!
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    let image = UIImage(data: imageData)
+                                    self.customCellImage.image = image
+                                    user.image = image
+                            })
+                        })
+                    }
                 }
-                    
             }
         }
-        
-        
     }
     
     class func identifier() -> String {
@@ -43,13 +51,11 @@ class CustomTweetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
