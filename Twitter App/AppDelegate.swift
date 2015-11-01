@@ -25,14 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //Instantiate
         
-        let tweetViewController = storyboard.instantiateViewControllerWithIdentifier(TweetViewController.identifier()) as! TweetViewController
-
-        
-            //call dedicated initiator
-        let navigationController = UINavigationController(rootViewController: tweetViewController)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
-        
+//        let tweetViewController = storyboard.instantiateViewControllerWithIdentifier(TweetViewController.identifier()) as! TweetViewController
+//
+//        
+//            //call dedicated initiator
+//        let navigationController = UINavigationController(rootViewController: tweetViewController)
+//        self.window?.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
+//        
         
         UITabBar.appearance().tintColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.0)
     }

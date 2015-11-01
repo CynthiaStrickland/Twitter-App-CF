@@ -17,6 +17,9 @@ class CustomTweetTableViewCell: UITableViewCell {
         
         didSet {
             
+            self.customTweetLabel.text = self.tweet!.text
+            self.customCellImage.image = UIImage(named: "ganesh.jpg")
+            
             if let tweet = self.tweet,
                 
                 user = tweet.user,

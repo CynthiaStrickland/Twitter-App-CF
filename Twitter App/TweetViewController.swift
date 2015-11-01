@@ -125,13 +125,12 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //   This is no long an instance of UITableView because I created a XIB file
         
-        let tweet = tweets[indexPath.row]
-        
-        cell.customTweetLabel.text = tweet.text
+        cell.tweet = tweets[indexPath.row]
         cell.backgroundColor = cellColorForIndex(indexPath)
         
         return cell
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let tweet = self.tweets[indexPath.row]

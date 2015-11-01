@@ -3,9 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTweetTableViewCell" customModule="Twitter_App" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTweetTableViewCell" customModule="Twitter_App" customModuleProvider="target">
+            <connections>
+                <outlet property="customCellImage" destination="XaW-Fr-g4z" id="y1I-Kg-aIU"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCustomTableViewCell" rowHeight="112" id="ljf-ZV-AwK" customClass="CustomTweetTableViewCell" customModule="Twitter_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="449" height="112"/>
@@ -14,22 +19,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="449" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l4-f3-wIy">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l4-f3-wIy">
                         <rect key="frame" x="8" y="76" width="433" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XaW-Fr-g4z">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ganesh.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XaW-Fr-g4z">
                         <rect key="frame" x="8" y="0.0" width="433" height="74"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="74" id="nC0-FF-cb1"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="XaW-Fr-g4z" firstAttribute="trailing" secondItem="yyE-Dl-BvY" secondAttribute="trailingMargin" id="Dmg-IX-496"/>
+                    <constraint firstItem="6l4-f3-wIy" firstAttribute="leading" secondItem="yyE-Dl-BvY" secondAttribute="leadingMargin" id="OA2-a4-R01"/>
+                    <constraint firstItem="6l4-f3-wIy" firstAttribute="bottom" secondItem="yyE-Dl-BvY" secondAttribute="bottomMargin" id="ODI-hS-pGX"/>
+                    <constraint firstItem="6l4-f3-wIy" firstAttribute="top" secondItem="XaW-Fr-g4z" secondAttribute="bottom" constant="2" id="co1-f5-NIa"/>
+                    <constraint firstItem="XaW-Fr-g4z" firstAttribute="top" secondItem="yyE-Dl-BvY" secondAttribute="topMargin" constant="-8" id="eOP-m1-4rS"/>
+                    <constraint firstItem="XaW-Fr-g4z" firstAttribute="leading" secondItem="yyE-Dl-BvY" secondAttribute="leadingMargin" id="xYa-gI-Js2"/>
+                    <constraint firstItem="6l4-f3-wIy" firstAttribute="trailing" secondItem="yyE-Dl-BvY" secondAttribute="trailingMargin" id="xrd-MC-J97"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="customCellImage" destination="XaW-Fr-g4z" id="CcR-wQ-ro6"/>
                 <outlet property="customTweetLabel" destination="6l4-f3-wIy" id="a1S-ec-heQ"/>
             </connections>
             <point key="canvasLocation" x="342.5" y="286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ganesh.jpg" width="736" height="1032"/>
+    </resources>
 </document>
