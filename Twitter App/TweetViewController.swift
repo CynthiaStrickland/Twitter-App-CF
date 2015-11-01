@@ -136,11 +136,11 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
         let tweet = self.tweets[indexPath.row]
             //create an instance of TweetDetailViewController
-        let tweetDetailViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier(TweetDetailViewController.identifier()) as! TweetDetailViewController
+        let tweetDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier(TweetDetailViewController.identifier()) as! TweetDetailViewController
         
-        tweetDetailViewcontroller.tweet = tweet
+        tweetDetailViewController.tweet = tweet
         
-        self.navigationController?.pushViewController(tweetDetailViewcontroller, animated: true)
+        self.navigationController?.pushViewController(tweetDetailViewController, animated: true)
         
     }
     

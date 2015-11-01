@@ -144,10 +144,10 @@
 				3D58D5961BE2C2AE009F1B9A /* CustomTweetTableViewCell.swift */,
 				3D04FE6A1BDEA88200E8B44A /* TweetViewController.swift */,
 				3D58D5921BE17F9B009F1B9A /* TweetDetailViewController.swift */,
-				3D04FEB71BDF48E800E8B44A /* TwitterTableViewCell.swift */,
 				3D04FEAB1BDEE6A800E8B44A /* TwitterLoginService.swift */,
 				3D04FEB11BDF3B2D00E8B44A /* TwitterService.swift */,
 				3D58D5981BE2CEFE009F1B9A /* ImageFetcher.swift */,
+				3D04FEB71BDF48E800E8B44A /* TwitterTableViewCell.swift */,
 			);
 			name = Controllers;
 			path = "Twitter App";
