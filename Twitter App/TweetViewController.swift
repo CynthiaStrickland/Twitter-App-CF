@@ -133,6 +133,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+                
         let tweet = self.tweets[indexPath.row]
             //create an instance of TweetDetailViewController
         let tweetDetailViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier(TweetDetailViewController.identifier()) as! TweetDetailViewController
@@ -159,9 +160,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
 //}
 
-    
-    
-    
     func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
         let row = CGFloat(indexPath.row)
         let section = CGFloat(indexPath.section)

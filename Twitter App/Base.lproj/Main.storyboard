@@ -41,6 +41,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="wSa-VV-vkh" id="PIf-NO-vPk"/>
+                        <segue destination="QUt-c8-BMj" kind="show" identifier="TweetDetailViewController" id="mPM-8m-nnb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

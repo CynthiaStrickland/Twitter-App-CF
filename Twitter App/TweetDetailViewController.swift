@@ -12,11 +12,12 @@ class TweetDetailViewController: UIViewController {
 
     var tweet: Tweet!
     
+    
     private lazy var detailLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFontOfSize(12)
-        label.text = "Created by Michael"
-        label.textColor = UIColor.blueColor()
+        label.text = "Created by Cynthia"
+        label.textColor = UIColor.blackColor()
         return label
     }()
     
