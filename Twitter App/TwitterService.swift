@@ -64,7 +64,7 @@ class TwitterService {
                 }
                 
                 if let data = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    print(data  )
+                    print(data)
                 }
             
                 switch response.statusCode {

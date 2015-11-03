@@ -18,9 +18,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var refreshBarButton: UIBarButtonItem!
     var spinner: UIActivityIndicatorView!
-    
-    var maxRows = 10
-    var maxSection = 8
 
     var tweets = [Tweet]() {
         didSet {
@@ -40,7 +37,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //  Registering NIB so TableView can use the NIB
         
-        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: nil)
+        let customTweetCellXib = UINib(nibName: "customTweetCell", bundle: nil)
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
     }
     
@@ -110,40 +107,36 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: UITableView
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == TweetDetailViewController.identifier() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let tweet = self.tweets[indexPath.row]
+                let tweetsDetailViewController = segue.destinationViewController as! TweetDetailViewController
+                tweetsDetailViewController.tweet = tweet
+            }
+        }
+    }
+    
+    // MARK: UITableView
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return maxSection
-    }
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetTableViewCell
         
-        //   This is no long an instance of UITableView because I created a XIB file
-        
         cell.tweet = tweets[indexPath.row]
-        cell.backgroundColor = cellColorForIndex(indexPath)
         
         return cell
     }
-
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-                
-        let tweet = self.tweets[indexPath.row]
-            //create an instance of TweetDetailViewController
-        let tweetDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier(TweetDetailViewController.identifier()) as! TweetDetailViewController
-        
-        tweetDetailViewController.tweet = tweet
-        
-        self.navigationController?.pushViewController(tweetDetailViewController, animated: true)
-        
+        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: nil)
     }
-    
+}
+
+
 //// MARK: - Navigation
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        
@@ -160,14 +153,14 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
 //}
 
-    func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
-        let row = CGFloat(indexPath.row)
-        let section = CGFloat(indexPath.section)
-        
-        let saturation = 1.0 - row / CGFloat(maxRows)
-        let hue = section / CGFloat(maxSection)
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
-        }
-    }
+//    func cellColorForIndex(indexPath:NSIndexPath) -> UIColor {
+//        let row = CGFloat(indexPath.row)
+//        let section = CGFloat(indexPath.section)
+//        
+//        let saturation = 1.0 - row / CGFloat(maxRows)
+//        let hue = section / CGFloat(maxSection)
+//        
+//        return UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
+//        }
+
 

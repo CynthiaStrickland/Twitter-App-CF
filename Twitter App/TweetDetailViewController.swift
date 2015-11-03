@@ -22,7 +22,7 @@ class TweetDetailViewController: UIViewController {
     }()
     
     class func identifier() -> String {
-        return "TweetDetailViewController"
+        return "tweetDetailViewController"
     }
     
     override func viewDidLoad() {
