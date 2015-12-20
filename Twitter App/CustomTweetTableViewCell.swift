@@ -57,11 +57,3 @@ class CustomTweetTableViewCell: UITableViewCell {
 
 }
 
-//                    NSOperationQueue().addOperationWithBlock({ () -> Void in
-//                        let imageData = NSData(contentsOfURL: url)!
-//                        self.customCellImage.image = UIImage(data: imageData)
-//
-//                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                        self.customCellImage.image = UIImage(data: imageData)
-//                        })
-//                    })

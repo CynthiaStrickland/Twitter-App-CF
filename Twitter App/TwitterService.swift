@@ -21,17 +21,13 @@ class TwitterService {
     class func tweetsFromHomeTimeline(completion: (String?, [Tweet]?) -> () ) {
         
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json"), parameters: nil)
-        
         if let account = self.sharedService.account {
             request.account = account
-
-            
             request.performRequestWithHandler { (data, response, error) -> Void in
                 if let error = error {
                     print(error.description)
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
                 }
-                
                 switch response.statusCode {
                 case 200...299:
                     let tweets = TweetJSONParser.TweetFromJSONData(data)
@@ -46,7 +42,6 @@ class TwitterService {
                 }
             }
         }
-        
     }
     
     class func getAuthUser(completion: (String?, User?)-> ()) {
@@ -54,8 +49,7 @@ class TwitterService {
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json"), parameters: nil)
         
         if let account = self.sharedService.account {
-            request.account = account
-            
+            request.account = account            
             request.performRequestWithHandler { (data, response, error) -> Void in
                 
                 if let error = error {
@@ -88,7 +82,6 @@ class TwitterService {
                 }
             }
         }
-    }
-    
+    }    
 }
 

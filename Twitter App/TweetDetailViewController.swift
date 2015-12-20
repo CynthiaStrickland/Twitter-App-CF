@@ -69,35 +69,9 @@ class TweetDetailViewController: UIViewController {
     
     func setupTweetDetailViewController() {
         self.detailLabel.text = self.tweet.isRetweet ? self.tweet.rqText : self.tweet.text
-    }
-    
+    }    
 }   
-    
-//    
-//    var tweet: Tweet?
-//    
-//    class func identifier() -> String {
-//        return "TweetDetailViewController"
-//    }
-//    
-//    class func isRetweet(tweetObject: [String : AnyObject]) -> (Bool, [String : AnyObject]?) {
-//        if let retweetObjectObject = tweetObject["retweeted_status"] as? [String : AnyObject] {
-//            if let _ = retweetObjectObject {
-//            
-//            
-//            }
-//        }
-//    }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        if let tweet = self.tweet {
-//            print(tweet.text)
-//        }
-//    }
-//    
-//
-//
-//}
+
 
 
 

@@ -11,8 +11,6 @@ import Social
 
 class TWITTERViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
-
-        //   Access Photo's and select an image
     var pickerController:UIImagePickerController = UIImagePickerController()
     
     @IBAction func tweetImage(sender: AnyObject) {
@@ -40,8 +38,7 @@ class TWITTERViewController: UIViewController, UIImagePickerControllerDelegate,U
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 
-        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

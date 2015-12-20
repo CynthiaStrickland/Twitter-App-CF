@@ -14,6 +14,7 @@ class User {
     var profileImageURL: String
     var image: UIImage?
     
+    
     init(name: String, profileImageURL: String) {
         self.name = name
         self.profileImageURL = profileImageURL
