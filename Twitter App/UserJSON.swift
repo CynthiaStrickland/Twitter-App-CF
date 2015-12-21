@@ -10,7 +10,7 @@ import UIKit
 
 class UserJSON {
     
-    class func userFromJSONData(json: NSData) -> [User]? {
+    class func userFromJSONData(json: NSData) -> [Tweet]? {
         
         do {
             
@@ -62,5 +62,12 @@ class UserJSON {
         
         return nil
     }
+}
+
+    func userFromData(user: [String : AnyObject]) -> User? {
+    if let name = user["name"] as? String, screenName = user["screen_name"] as? String, profileImageUrl = user["profile_image_url_https"] as? String, backgroundUrl = user["profile_background_image_url_https"] as? String, location = user["location"] as? String {
+        return User(name: name, profileImageURL: profileImageUrl, screenName: screenName, backgroundUrl: backgroundUrl, location: location)
+    }
+    return nil
 }
 
