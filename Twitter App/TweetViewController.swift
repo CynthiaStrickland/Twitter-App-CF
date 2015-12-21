@@ -10,15 +10,13 @@ import UIKit
 
 class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBAction func refreshBarButton(sender: AnyObject) {
-        
+    @IBAction func refreshBarButton(sender: AnyObject) {        
     }
     
     @IBOutlet weak var tableView: UITableView!
     
     var refreshBarButton: UIBarButtonItem!
     var spinner: UIActivityIndicatorView!
-
     var tweets = [Tweet]() {
         didSet {
             self.tableView.reloadData()
@@ -28,7 +26,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupTableView()
         self.getAccount()
         let customTweetCellXib = UINib(nibName: "customTweetCell", bundle: nil)
@@ -39,7 +36,7 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 10
-        self.tableView.rowHeight = UITableViewAutomaticDimension        //Predefined method...
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.refreshBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "getTweets")
         self.navigationItem.rightBarButtonItem = self.refreshBarButton
         self.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -49,11 +46,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getAccount() {
         TwitterLoginService.loginTwitter({ (error, account) -> () in
-            if let error = error {
-                print(error)
-                return
-            }
-            
             if let account = account {
                 TwitterService.sharedService.account = account
                 self.authenticateUser()
@@ -63,11 +55,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func authenticateUser(){
         TwitterService.getAuthUser { (error, user) -> () in
-            if let error = error {
-                print(error)
-                return
-            }
-            
             if let user = user {
                 TwitterService.sharedService.user = user
                 self.getTweets()
@@ -80,11 +67,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner)
         }
         TwitterService.tweetsFromHomeTimeline { (error, tweets) -> () in
-            if let error = error {
-                print(error)
-                return
-            }
-            
             if let tweets = tweets {
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     self.tweets = tweets
@@ -94,7 +76,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: UITableView
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == TweetDetailViewController.identifier() {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -106,7 +87,6 @@ class TweetViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // MARK: UITableView
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }

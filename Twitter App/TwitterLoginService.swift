@@ -22,6 +22,7 @@ class TwitterLoginService {
                 if granted {
                     if let account = accountStore.accountsWithAccountType(accountType).first as? ACAccount {
                         completionHandler(nil, account)
+                        print("ACCESS GRANTED")
                     }
                 } else {
                     completionHandler("This app requires twitter access",nil)

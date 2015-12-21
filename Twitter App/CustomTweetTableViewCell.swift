@@ -24,15 +24,12 @@ class CustomTweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var customCellImage: UIImageView!
     @IBOutlet weak var customTweetLabel: UILabel!
-    
     var tweet : Tweet? {
         
         didSet {
             
             self.customTweetLabel.text = self.tweet!.text
             if let tweet = self.tweet, user = tweet.user {
-
-            
             if let image = user.image {
                 self.customCellImage.image = image
             } else {

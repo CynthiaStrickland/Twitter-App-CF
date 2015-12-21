@@ -11,15 +11,11 @@ import Accounts
 import Social
 
 class TwitterService {
-    // Setup singleton instance
     static let sharedService = TwitterService()
-    
-    // Setup instance variables
     var account : ACAccount?
     var user : User?
     
-    class func tweetsFromHomeTimeline(completion: (String?, [Tweet]?) -> () ) {
-        
+    class func tweetsFromHomeTimeline(completion: (String?, [Tweet]?) -> () ) {        
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json"), parameters: nil)
         if let account = self.sharedService.account {
             request.account = account

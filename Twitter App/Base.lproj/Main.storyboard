@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" id="7Io-Gk-ygS">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="zM2-7b-GB0">
                             <connections>
-                                <action selector="refreshBarButton:" destination="BYZ-38-t0r" id="t2r-hj-iOp"/>
+                                <action selector="refreshBarButton:" destination="BYZ-38-t0r" id="M0m-FG-iQI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
