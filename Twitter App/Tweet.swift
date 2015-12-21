@@ -15,9 +15,9 @@ class Tweet {
     var user: User?
     let rqText: String?
     let rqUser: User?
-    var isRetweet: Bool
+    var isRetweet: Tweet?
     
-    init(text : String, rqText: String? = nil, id : String, user: User? = nil, rqUser: User? = nil, isRetweet: Bool = false) {
+    init(text : String, rqText: String? = nil, id : String, user: User? = nil, rqUser: User? = nil, isRetweet: Tweet?=nil) {
         self.text =  text
         self.id = id
         self.user = user

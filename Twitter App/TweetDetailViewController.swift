@@ -12,6 +12,14 @@ class TweetDetailViewController: UIViewController {
 
     var tweet: Tweet!
     
+
+    @IBOutlet weak var userProfileImage: UIButton!
+    @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    
+    class func identifier() -> String {
+        return "tweetDetailViewController"
+    }
     
     private lazy var detailLabel:UILabel = {
         let label = UILabel()
@@ -21,16 +29,27 @@ class TweetDetailViewController: UIViewController {
         return label
     }()
     
-    class func identifier() -> String {
-        return "tweetDetailViewController"
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupAppearance()
-        self.setupTweetDetailViewController()
+//        self.setupAppearance()
+//        self.setupTweetDetailViewController()
+        
+        if tweet.isRetweet != nil {
+            self.title = "@\(tweet.isRetweet!.user!.screenName)"
+            tweetLabel.text = tweet.isRetweet?.text
+            userLabel.text = tweet.isRetweet?.user?.name
+            userProfileImage.setImage(tweet.isRetweet?.user?.image, forState: .Normal)
+        } else {
+            self.title = "@\(tweet.user!.screenName)"
+            tweetLabel.text = tweet.text
+            userLabel.text = tweet.user?.name
+            userProfileImage.setImage(tweet.user?.image, forState: .Normal)
+        }
     }
     
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -50,27 +69,20 @@ class TweetDetailViewController: UIViewController {
         bottom.active = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func setupAppearance() {
-        if self.tweet.isRetweet {
-            if let rqUser = self.tweet.rqUser {
-                self.navigationItem.title = rqUser.name
-                return
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == UserTimelineViewController.identifier() {
+            if let destination = segue.destinationViewController as? UserTimelineViewController {
+                if tweet.isRetweet != nil {
+                    destination.currentUser = self.tweet.isRetweet?.user
+                } else {
+                    destination.currentUser = self.tweet.user
+                    
+                }
             }
         }
-        
-        if let name = tweet.user?.name {
-            self.navigationItem.title = name
-        }
     }
-    
-    func setupTweetDetailViewController() {
-        self.detailLabel.text = self.tweet.isRetweet ? self.tweet.rqText : self.tweet.text
-    }    
-}   
+}
+
 
 
 
